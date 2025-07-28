@@ -10,6 +10,11 @@ DATASET = None
 def extract_service_name(inject_pod=None, service_file=None):
     """提取服务名称，根据数据集类型处理"""
     global DATASET  # 使用全局变量
+
+    name_source = inject_pod if inject_pod else service_file
+    if not name_source:
+        return None
+    
     if DATASET == 'tt':
         if inject_pod:
             # Ground Truth 服务名称提取
@@ -24,8 +29,65 @@ def extract_service_name(inject_pod=None, service_file=None):
         elif service_file:
             # 实验结果服务名称提取
             return service_file.replace('_frequency.csv', '').split('_')[0]
+    elif DATASET == 'gaia':
+        # 新逻辑: 只清理文件名后缀，保留实例编号 (如 'mobservice1')
+        return name_source.replace('.csv', '').replace('_frequency', '')
+    elif DATASET == 'aiops':
+        # 为 aiops 留空
+        pass
     else:
         raise ValueError(f"Unsupported dataset: {DATASET}")
+    
+    return name_source.replace('.csv', '')
+
+def load_ground_truth(config):
+    """
+    智能加载所有真值数据，并返回一个统一格式的DataFrame。
+    """
+    global DATASET
+    all_ground_truth_dfs = []
+    print(f"Loading ground truth for '{DATASET}' dataset...")
+
+    if DATASET in ['ob', 'tt']:
+        fault_files = config.get('fault_files', [])
+        for gt_file in fault_files:
+            if os.path.exists(gt_file):
+                with open(gt_file, 'r') as f:
+                    fault_data = json.load(f)
+                gt_df = df_trans(fault_data) # 复用旧的转换函数
+                all_ground_truth_dfs.append(gt_df)
+    
+    elif DATASET == 'gaia':
+        fault_files = config.get('fault_files', [])
+        for gt_file in fault_files:
+            if os.path.exists(gt_file):
+                try:
+                    temp_df = pd.read_csv(gt_file)
+                    # 检查关键列
+                    if 'st_time' not in temp_df.columns or 'instance' not in temp_df.columns:
+                        print(f"Warning: {gt_file} is missing 'st_time' or 'instance' columns. Skipping.")
+                        continue
+                    
+                    # 转换列以匹配内部格式
+                    temp_df['inject_time_minute'] = pd.to_datetime(temp_df['st_time'], errors='coerce').dt.strftime('%Y-%m-%d %H:%M')
+                    # 新逻辑: 使用 'instance' 列作为正确的故障服务实例
+                    temp_df['inject_pod'] = temp_df['instance'] 
+                    temp_df.rename(columns={'anomaly_type': 'inject_type'}, inplace=True)
+                    
+                    # 筛选并组合
+                    required_cols = ['inject_time_minute', 'inject_pod', 'inject_type']
+                    final_cols = [col for col in required_cols if col in temp_df.columns]
+                    all_ground_truth_dfs.append(temp_df[final_cols])
+                except Exception as e:
+                    print(f"Error processing ground truth file {gt_file}: {e}")
+
+    elif DATASET == 'aiops':
+        # 为 aiops 留空
+        pass
+
+    if not all_ground_truth_dfs:
+        return pd.DataFrame()
+    return pd.concat(all_ground_truth_dfs, ignore_index=True).dropna(subset=['inject_time_minute', 'inject_pod'])
 
 def df_trans(fault_data):
     """将故障数据转换为DataFrame格式"""
@@ -177,16 +239,12 @@ def calculate_pr_stage1_by_dataset(dataset_config):
     
     print(f"Loaded {len(experiment_results)} experiment results")
     
-    all_ground_truth = pd.DataFrame()
-    for gt_file in available_fault_files:
-        with open(gt_file, 'r') as f:
-            fault_data = json.load(f)
-        gt_df = df_trans(fault_data)
-        all_ground_truth = pd.concat([all_ground_truth, gt_df], ignore_index=True)
+    all_ground_truth = load_ground_truth(dataset_config)
     
     if all_ground_truth.empty:
-        print("No ground truth data found!")
+        print("No ground truth data could be loaded!")
         return
+    print(f"Loaded {len(all_ground_truth)} ground truth records in total.")
     
     overall_pr_results = evaluation_stage1(experiment_results, all_ground_truth, k_values)
     

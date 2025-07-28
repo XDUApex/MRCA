@@ -84,10 +84,10 @@ DATASET_CONFIG = {
         'anomaly_output_path': 'anomaly_detection/anomaly_score/gaia',
         'model_path': 'models/gaia/vae_model.pth',
         'date_ranges': {
-            'train': {'start': '2021-07-01', 'end': '2021-07-03'},
+            'train': {'start': '2021-07-04', 'end': '2021-07-05'},
             'detection': {'start': '2021-07-04', 'end': '2021-07-31'},
         },
-        'fault_files_pattern': '/home/fuxian/DataSet/new_GAIA/fault_records/{date}-fault_list.json',
+        'fault_files_pattern': '/home/fuxian/DataSet/new_GAIA/{date}/groundtruth.csv',
         'dataset_mapping_pattern': 'GAIA Dataset {date}',
         'training_params': {
             'epochs': 10000,
@@ -133,30 +133,43 @@ def get_dataset_config(dataset_name):
     config = DATASET_CONFIG[dataset_name].copy()
     
     if 'date_ranges' in config:
-        train_dates = generate_date_range(
-            config['date_ranges']['train']['start'],
-            config['date_ranges']['train']['end']
-        )
-        detection_dates = generate_date_range(
-            config['date_ranges']['detection']['start'],
-            config['date_ranges']['detection']['end']
-        )
+        # 1. 根据 date_ranges 生成训练日期 (等同于 normal) 和检测日期 (等同于 abnormal)
+        if isinstance(config['date_ranges']['train'], list):
+            train_dates = config['date_ranges']['train']
+            detection_dates = config['date_ranges']['detection']
+        else:
+            train_dates = generate_date_range(
+                config['date_ranges']['train']['start'],
+                config['date_ranges']['train']['end']
+            )
+            detection_dates = generate_date_range(
+                config['date_ranges']['detection']['start'],
+                config['date_ranges']['detection']['end']
+            )
         
-        config['dates'] = {
-            'train': train_dates,
-            'detection': detection_dates
+        # 2. 动态创建 normal_data 字典，以匹配 ob/tt 的结构
+        config['normal_data'] = {
+            'path': config['raw_data_path'],
+            'dates': train_dates
         }
         
+        # 3. 动态创建 abnormal_data 字典，以匹配 ob/tt 的结构
+        config['abnormal_data'] = {
+            'path': config['raw_data_path'],
+            'dates': detection_dates
+        }
+        
+        # 4. 原有的 fault_files 和 dataset_mapping 逻辑现在基于 detection_dates
         if 'fault_files_pattern' in config:
             fault_files = []
-            for date in detection_dates:
+            for date in detection_dates:  # 使用检测日期来生成故障文件列表
                 fault_file = config['fault_files_pattern'].format(date=date)
                 fault_files.append(fault_file)
             config['fault_files'] = fault_files
         
         if 'dataset_mapping_pattern' in config:
             dataset_mapping = {}
-            for date in detection_dates:
+            for date in detection_dates:  # 使用检测日期来生成数据集映射
                 dataset_mapping[date] = config['dataset_mapping_pattern'].format(date=date)
             config['dataset_mapping'] = dataset_mapping
     

@@ -11,6 +11,44 @@ import json
 import argparse
 from config import get_dataset_config
 
+def load_injection_times(fault_file_path):
+    """
+    智能加载故障注入时间。
+    能处理 .json (ob/tt) 和 .csv (gaia) 格式。
+    返回一个时间字符串列表 (格式: 'YYYY-MM-DD HH:MM:SS')。
+    """
+    injection_times = []
+    
+    if not os.path.exists(fault_file_path):
+        print(f"Warning: Fault file not found: {fault_file_path}")
+        return injection_times
+
+    try:
+        if fault_file_path.endswith('.json'):
+            # 处理 ob/tt 的 JSON 文件
+            with open(fault_file_path, 'r') as f:
+                fault_data = json.load(f)
+            for hour_faults in fault_data.values():
+                for fault in hour_faults:
+                    injection_times.append(fault['inject_time'])
+        
+        elif fault_file_path.endswith('.csv'):
+            # 处理 gaia 的 CSV 文件
+            df = pd.read_csv(fault_file_path)
+            # 假设故障开始时间列为 'st_time'
+            if 'st_time' in df.columns:
+                # 转换时间格式为 'YYYY-MM-DD HH:MM:SS'
+                # errors='coerce' 会将无法转换的值变为 NaT, dropna() 再移除它们
+                time_series = pd.to_datetime(df['st_time'], errors='coerce').dropna().dt.strftime('%Y-%m-%d %H:%M:%S')
+                injection_times = time_series.unique().tolist() # 使用unique避免重复
+            else:
+                print(f"Warning: 'st_time' column not found in {fault_file_path}")
+
+    except Exception as e:
+        print(f"Error processing fault file {fault_file_path}: {e}")
+        
+    return injection_times
+
 class Encoder(nn.Module):
     def __init__(self, input_size, hidden_size, latent_size):
         super(Encoder, self).__init__()
@@ -94,7 +132,6 @@ def detect_anomalies_multiple_days(base_input_folder, base_output_folder, detect
     for date_str in detection_dates:
         print(f"Detecting anomalies for {date_str}")
         
-        # 找到对应的故障注入文件
         fault_file = None
         for ff in fault_files:
             if date_str in ff:
@@ -105,21 +142,11 @@ def detect_anomalies_multiple_days(base_input_folder, base_output_folder, detect
             print(f"No fault file found for {date_str}")
             continue
             
-        if not os.path.exists(fault_file):
-            print(f"Fault file not found: {fault_file}")
-            continue
-            
-        # 读取故障注入时间
-        with open(fault_file, 'r') as f:
-            fault_data = json.load(f)
-        
-        injection_times = []
-        for hour_faults in fault_data.values():
-            for fault in hour_faults:
-                injection_times.append(fault['inject_time'])
+        # 使用新的通用函数加载故障注入时间
+        injection_times = load_injection_times(fault_file)
         
         if not injection_times:
-            print(f"No injection times found for {date_str}")
+            print(f"No injection times found for {date_str} from {fault_file}")
             continue
         
         # 检测异常 - 为每个日期创建单独的输出文件夹

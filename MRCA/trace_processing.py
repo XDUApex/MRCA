@@ -5,6 +5,8 @@ import argparse
 from datetime import datetime, timedelta
 from config import get_dataset_config
 
+DATASET = None
+
 def process_trace_files(input_folder, output_folder):
     """处理单个文件夹的trace文件"""
     if not os.path.exists(output_folder):
@@ -24,10 +26,32 @@ def process_trace_files(input_folder, output_folder):
             file_path = os.path.join(input_folder, filename)
             data = pd.read_csv(file_path)
 
-            # 检查数据是否包含必要的列
+            global DATASET
+            # gaia 数据集的列名适配
+            if DATASET == 'gaia':
+                # 检查gaia特定列是否存在
+                gaia_cols = ['service_name', 'span_id', 'parent_id', 'st_time', 'ed_time']
+                if not all(col in data.columns for col in gaia_cols):
+                    print(f"Warning: Missing gaia-specific columns in {filename}. Skipping...")
+                    continue
+                # 计算 Duration (单位: 纳秒)
+                data['Duration'] = (data['ed_time'] - data['st_time']) * 1_000_000_000
+                # 创建 StartTimeUnixNano
+                data['StartTimeUnixNano'] = data['st_time'] * 1_000_000_000
+                # 重命名列以匹配 ob/tt
+                data.rename(columns={
+                    'service_name': 'PodName',
+                    'span_id': 'SpanID',
+                    'parent_id': 'ParentID'
+                }, inplace=True)
+            elif DATASET == 'aiops':
+                # 为aiops留空
+                pass
+
+            # 检查统一后的数据是否包含必要的列
             required_columns = ['SpanID', 'ParentID', 'PodName', 'StartTimeUnixNano', 'Duration']
             if not all(col in data.columns for col in required_columns):
-                print(f"Warning: Missing required columns in {filename}. Skipping...")
+                print(f"Warning: Missing required columns in {filename} after processing. Skipping...")
                 continue
 
             # 创建 ParentPodName 映射
@@ -86,6 +110,9 @@ def main():
                        help='Dataset name (ob, tt, gaia, aiops)')
     
     args = parser.parse_args()
+
+    global DATASET
+    DATASET = args.dataset
     
     # 获取数据集配置
     config = get_dataset_config(args.dataset)
