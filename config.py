@@ -84,7 +84,7 @@ DATASET_CONFIG = {
         'anomaly_output_path': 'anomaly_detection/anomaly_score/gaia',
         'model_path': 'models/gaia/vae_model.pth',
         'date_ranges': {
-            'train': {'start': '2021-07-04', 'end': '2021-07-05'},
+            'train': {'start': '2021-07-01', 'end': '2021-07-03'},
             'detection': {'start': '2021-07-04', 'end': '2021-07-31'},
         },
         'fault_files_pattern': '/home/fuxian/DataSet/new_GAIA/{date}/groundtruth.csv',
@@ -95,7 +95,7 @@ DATASET_CONFIG = {
             'learning_rate': 2e-3
         },
         'evaluation_params': {
-            'k_values': [1, 3, 5, 7, 9],
+            'k_values': [1, 3, 5, 7, 9, 10],
             'show_individual_results': False,
             'max_individual_display': 5
         }
@@ -106,11 +106,21 @@ DATASET_CONFIG = {
         'processed_data_path': 'processed_data/aiops_data',
         'anomaly_output_path': 'anomaly_detection/anomaly_score/aiops',
         'model_path': 'models/aiops/vae_model.pth',
-        'date_ranges': {
-            'train': ['2022-05-01', '2022-05-03'],
-            'detection': ['2022-05-01', '2022-05-03', '2022-05-05', '2022-05-07', '2022-05-09'],
+        'normal_data': {
+            'path': '/home/fuxian/MRCA/raw_data/normal_data',
+            'dates': ['2022-05-01', '2022-05-03', '2022-05-05', '2022-05-07', '2022-05-09'] 
         },
-        'fault_files_pattern': '/home/fuxian/DataSet/NewDataset/aiops/fault_data/{date}-fault_list.json',
+        'abnormal_data': {
+            'path': '/home/fuxian/DataSet/NewDataset/aiops',
+            'dates': ['2022-05-01', '2022-05-03', '2022-05-05', '2022-05-07', '2022-05-09']
+        },
+        'fault_files': [
+            '/home/fuxian/DataSet/NewDataset/aiops/2022-05-01/groundtruth.csv',
+            '/home/fuxian/DataSet/NewDataset/aiops/2022-05-03/groundtruth.csv',
+            '/home/fuxian/DataSet/NewDataset/aiops/2022-05-05/groundtruth.csv',
+            '/home/fuxian/DataSet/NewDataset/aiops/2022-05-07/groundtruth.csv',
+            '/home/fuxian/DataSet/NewDataset/aiops/2022-05-09/groundtruth.csv',
+        ],
         'dataset_mapping_pattern': 'AIOps Dataset {date}',
         'training_params': {
             'epochs': 6000,
@@ -118,10 +128,22 @@ DATASET_CONFIG = {
             'learning_rate': 1e-3
         },
         'evaluation_params': {
-            'k_values': [1, 3, 5, 7, 9],
+            'k_values': [1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23, 25],
             'show_individual_results': True,
-            'max_individual_display': 3
-        }
+            'max_individual_display': 0
+        },
+        'all_base_services': [
+            'adservice',
+            'cartservice',
+            'checkoutservice',
+            'currencyservice',
+            'emailservice',
+            'frontend',
+            'paymentservice',
+            'productcatalogservice',
+            'recommendationservice',
+            'shippingservice'
+        ]
     }
 }
 

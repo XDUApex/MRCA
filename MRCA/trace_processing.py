@@ -28,7 +28,7 @@ def process_trace_files(input_folder, output_folder):
 
             global DATASET
             # gaia 数据集的列名适配
-            if DATASET == 'gaia':
+            if DATASET == 'gaia' or DATASET == 'aiops':
                 # 检查gaia特定列是否存在
                 gaia_cols = ['service_name', 'span_id', 'parent_id', 'st_time', 'ed_time']
                 if not all(col in data.columns for col in gaia_cols):
@@ -44,9 +44,6 @@ def process_trace_files(input_folder, output_folder):
                     'span_id': 'SpanID',
                     'parent_id': 'ParentID'
                 }, inplace=True)
-            elif DATASET == 'aiops':
-                # 为aiops留空
-                pass
 
             # 检查统一后的数据是否包含必要的列
             required_columns = ['SpanID', 'ParentID', 'PodName', 'StartTimeUnixNano', 'Duration']
@@ -85,14 +82,10 @@ def process_multiple_days_trace(config, data_type):
     data_config = config[f'{data_type}_data']
     base_input_folder = data_config['path']
     base_output_folder = os.path.join(config['processed_data_path'], data_type)
-    start_date = min(data_config['dates'])
-    end_date = max(data_config['dates'])
     
-    current_date = datetime.strptime(start_date, '%Y-%m-%d')
-    end_date_dt = datetime.strptime(end_date, '%Y-%m-%d')
+    dates_to_process = data_config['dates']
     
-    while current_date <= end_date_dt:
-        date_str = current_date.strftime('%Y-%m-%d')
+    for date_str in dates_to_process:
         input_folder = os.path.join(base_input_folder, date_str, 'trace')
         output_folder = os.path.join(base_output_folder, date_str, 'trace_latency')
         
@@ -101,8 +94,6 @@ def process_multiple_days_trace(config, data_type):
             process_trace_files(input_folder, output_folder)
         else:
             print(f"Warning: Trace folder not found for {date_str}")
-            
-        current_date += timedelta(days=1)
 
 def main():
     parser = argparse.ArgumentParser(description='Process trace data for specified dataset')

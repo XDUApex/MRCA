@@ -27,14 +27,23 @@ def sort_and_save_logs(input_folder, output_folder):
     # 针对 gaia 数据集，统一列名
     if DATASET == 'gaia' and 'service' in all_data.columns:
         all_data.rename(columns={'service': 'PodName'}, inplace=True)
-    
+    # 新增 aiops 逻辑
+    if DATASET == 'aiops' and 'service' in all_data.columns:
+        all_data.rename(columns={'service': 'PodName'}, inplace=True)
+
     # 针对 gaia 数据集，统一时间戳列名
     if DATASET == 'gaia' and 'timestamp' in all_data.columns:
-         all_data.rename(columns={'timestamp': 'Timestamp'}, inplace=True)
+        all_data.rename(columns={'timestamp': 'Timestamp'}, inplace=True)
+    # 新增 aiops 逻辑
+    if DATASET == 'aiops' and 'timestamp' in all_data.columns:
+        all_data.rename(columns={'timestamp': 'Timestamp'}, inplace=True)
 
     # 针对 gaia 数据集，统一日志内容列名
     if DATASET == 'gaia' and 'message' in all_data.columns:
-         all_data.rename(columns={'message': 'Log'}, inplace=True)
+        all_data.rename(columns={'message': 'Log'}, inplace=True)
+    # 新增 aiops 逻辑
+    if DATASET == 'aiops' and 'message' in all_data.columns:
+        all_data.rename(columns={'message': 'Log'}, inplace=True)
          
     # 检查 PodName 列是否存在，如果不存在则跳过
     if 'PodName' not in all_data.columns:
@@ -113,7 +122,8 @@ def process_log_file(log_path, output_dir):
     # print(f"Frequency data for {log_path}: {frequency.shape}")
 
     # 调整过滤条件，避免过于严格
-    threshold = 0.85 * len(frequency)
+    # threshold = 0.85 * len(frequency)
+    threshold = 0.95 * len(frequency)
     frequency = frequency.loc[:, (frequency == 0).sum(axis=0) < threshold]
     frequency = frequency.loc[~(frequency == 0).all(axis=1)]
     # print(f"Filtered frequency data for {log_path}: {frequency.shape}")
@@ -129,14 +139,9 @@ def process_multiple_days_logs(config, data_type):
     data_config = config[f'{data_type}_data']
     base_input_folder = data_config['path']
     base_output_folder = os.path.join(config['processed_data_path'], data_type)
-    start_date = min(data_config['dates'])
-    end_date = max(data_config['dates'])
+    dates_to_process = data_config['dates']
     
-    current_date = datetime.strptime(start_date, '%Y-%m-%d')
-    end_date_dt = datetime.strptime(end_date, '%Y-%m-%d')
-    
-    while current_date <= end_date_dt:
-        date_str = current_date.strftime('%Y-%m-%d')
+    for date_str in dates_to_process:
         input_folder = os.path.join(base_input_folder, date_str, 'log')
         temp_output_folder = os.path.join('temp_processed_data', data_type, date_str, 'log_classification')
         final_output_folder = os.path.join(base_output_folder, date_str, 'log_template')
@@ -160,8 +165,6 @@ def process_multiple_days_logs(config, data_type):
                 print(f"Cleaned up temporary files for {date_str}")
         else:
             print(f"Warning: Log folder not found for {date_str}")
-            
-        current_date += timedelta(days=1)
     
     # 清理整个临时目录
     if os.path.exists('temp_processed_data'):
