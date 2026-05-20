@@ -1,0 +1,288 @@
+{
+  "schema_version": 1,
+  "description": "Canonical RQ1 reproduction plan for the MRCA artifact. Historical tuning runs are intentionally not part of this file.",
+  "experiment": "rq1",
+  "python_module_prefix": "python -m",
+  "stage1_profile": {
+    "method": "vae",
+    "entrypoint": "MRCA.anomaly_detection",
+    "model": {
+      "input_size": 2,
+      "hidden_size": 128,
+      "latent_size": 16,
+      "kl_beta": 0.5
+    },
+    "dataset_training_params_from": "config.py: DATASET_CONFIG[*].training_params"
+  },
+  "stage2_profiles": {
+    "standard_granger_fusion": {
+      "entrypoint": "MRCA.rcl_unified",
+      "method": "granger",
+      "top_percentage": 0.8,
+      "window_minutes": 10,
+      "max_lag": 2,
+      "scoring": "min",
+      "fusion_alpha": 0.5,
+      "fusion_beta": 0.5,
+      "env": {}
+    },
+    "legacy_metric_pair_granger": {
+      "entrypoint": "MRCA.rcl_unified",
+      "method": "granger",
+      "granger_only": true,
+      "legacy": true,
+      "top_percentage": 0.8,
+      "window_minutes": 5,
+      "max_lag": 2,
+      "scoring": "min",
+      "env": {}
+    },
+    "gaia_outflow": {
+      "entrypoint": "MRCA.rcl_unified",
+      "method": "granger_outflow",
+      "top_percentage": 0.8,
+      "window_minutes": 20,
+      "max_lag": 2,
+      "scoring": "avg",
+      "fusion_alpha": 0.7,
+      "fusion_beta": 0.3,
+      "env": {
+        "MRCA_RESAMPLE_RULE": "10S",
+        "MRCA_OUTFLOW_SCORE_MODE": "net"
+      }
+    },
+    "aiops_service_outflow": {
+      "entrypoint": "MRCA.rcl_unified",
+      "method": "granger_outflow",
+      "top_percentage": 0.8,
+      "window_minutes": 5,
+      "max_lag": 2,
+      "scoring": "min",
+      "fusion_alpha": 0.0,
+      "fusion_beta": 1.0,
+      "env": {
+        "MRCA_AIOPS_OUTFLOW_METRICS": "service_mean_response_time,service_request_rate,service_success_rate",
+        "MRCA_OUTFLOW_SCORE_MODE": "outflow",
+        "MRCA_OUTFLOW_CANDIDATE_GRAPH": "1"
+      }
+    },
+    "aiops_service_outflow_fusion": {
+      "entrypoint": "MRCA.rcl_unified",
+      "method": "granger_outflow",
+      "top_percentage": 0.8,
+      "window_minutes": 5,
+      "max_lag": 2,
+      "scoring": "min",
+      "fusion_alpha": 0.2,
+      "fusion_beta": 0.5,
+      "env": {
+        "MRCA_AIOPS_OUTFLOW_METRICS": "service_mean_response_time,service_request_rate,service_success_rate",
+        "MRCA_OUTFLOW_SCORE_MODE": "outflow",
+        "MRCA_OUTFLOW_CANDIDATE_GRAPH": "1",
+        "MRCA_AIOPS_SERVICE_LEVEL_FUSION": "1"
+      }
+    }
+  },
+  "runs": [
+    {
+      "dataset": "ob",
+      "modality": "L",
+      "stage": "stage1",
+      "stage1_modality": "log",
+      "expected": {"cases": 56, "hr_at_1": 0.1428571428571428, "hr_at_3": 0.3035714285714285, "hr_at_5": 0.5178571428571429}
+    },
+    {
+      "dataset": "ob",
+      "modality": "T",
+      "stage": "stage1",
+      "stage1_modality": "trace",
+      "expected": {"cases": 56, "hr_at_1": 0.107142857142857, "hr_at_3": 0.2857142857142857, "hr_at_5": 0.4821428571428571}
+    },
+    {
+      "dataset": "ob",
+      "modality": "TL",
+      "stage": "stage1",
+      "stage1_modality": "all",
+      "expected": {"cases": 56, "hr_at_1": 0.1071428571428571, "hr_at_3": 0.3392857142857143, "hr_at_5": 0.5178571428571429}
+    },
+    {
+      "dataset": "ob",
+      "modality": "ML",
+      "stage": "stage2",
+      "modality_combo": "log+metric",
+      "profile": "standard_granger_fusion",
+      "result_path": "rq1_RCA/ob/log+metric/pr_results.txt",
+      "expected": {"cases": 56, "hr_at_1": 0.1785714285714285, "hr_at_3": 0.3035714285714285, "hr_at_5": 0.5357142857142857}
+    },
+    {
+      "dataset": "ob",
+      "modality": "TM",
+      "stage": "stage2",
+      "modality_combo": "trace+metric",
+      "profile": "standard_granger_fusion",
+      "result_path": "rq1_RCA/ob/trace+metric/pr_results.txt",
+      "expected": {"cases": 56, "hr_at_1": 0.1071428571428571, "hr_at_3": 0.25, "hr_at_5": 0.4285714285714285}
+    },
+    {
+      "dataset": "ob",
+      "modality": "TML",
+      "stage": "stage2",
+      "modality_combo": "all+metric",
+      "profile": "legacy_metric_pair_granger",
+      "result_path": "rq1_RCA/ob/all+metric/pr_results.txt",
+      "expected": {"cases": 56, "hr_at_1": 0.5892857142857143, "hr_at_3": 0.7857142857142857, "hr_at_5": 0.8571428571428571}
+    },
+    {
+      "dataset": "tt",
+      "modality": "L",
+      "stage": "stage1",
+      "stage1_modality": "log",
+      "expected": {"cases": 45, "hr_at_1": 0.0222222222222222, "hr_at_3": 0.0666666666666666, "hr_at_5": 0.0888888888888888}
+    },
+    {
+      "dataset": "tt",
+      "modality": "T",
+      "stage": "stage1",
+      "stage1_modality": "trace",
+      "expected": {"cases": 45, "hr_at_1": 0.0, "hr_at_3": 0.0666666666666666, "hr_at_5": 0.111111111111111}
+    },
+    {
+      "dataset": "tt",
+      "modality": "TL",
+      "stage": "stage1",
+      "stage1_modality": "all",
+      "expected": {"cases": 45, "hr_at_1": 0.0444444444444444, "hr_at_3": 0.1555555555555555, "hr_at_5": 0.1555555555555555}
+    },
+    {
+      "dataset": "tt",
+      "modality": "ML",
+      "stage": "stage2",
+      "modality_combo": "log+metric",
+      "profile": "standard_granger_fusion",
+      "result_path": "rq1_RCA/tt/log+metric/pr_results.txt",
+      "expected": {"cases": 45, "hr_at_1": 0.0222222222222222, "hr_at_3": 0.0444444444444444, "hr_at_5": 0.1111111111111111}
+    },
+    {
+      "dataset": "tt",
+      "modality": "TM",
+      "stage": "stage2",
+      "modality_combo": "trace+metric",
+      "profile": "standard_granger_fusion",
+      "result_path": "rq1_RCA/tt/trace+metric/pr_results.txt",
+      "expected": {"cases": 45, "hr_at_1": 0.0, "hr_at_3": 0.0444444444444444, "hr_at_5": 0.1555555555555555}
+    },
+    {
+      "dataset": "tt",
+      "modality": "TML",
+      "stage": "stage2",
+      "modality_combo": "all+metric",
+      "profile": "legacy_metric_pair_granger",
+      "result_path": "rq1_RCA/tt/all+metric/pr_results.txt",
+      "expected": {"cases": 45, "hr_at_1": 0.6, "hr_at_3": 0.8, "hr_at_5": 0.8666666666666667}
+    },
+    {
+      "dataset": "gaia",
+      "modality": "L",
+      "stage": "stage1",
+      "stage1_modality": "log",
+      "expected": {"cases": 1099, "hr_at_1": 0.0919017288444039, "hr_at_3": 0.3212010919017287, "hr_at_5": 0.6706096451319381}
+    },
+    {
+      "dataset": "gaia",
+      "modality": "T",
+      "stage": "stage1",
+      "stage1_modality": "trace",
+      "expected": {"cases": 1099, "hr_at_1": 0.1501364877161055, "hr_at_3": 0.4804367606915377, "hr_at_5": 0.6706096451319381}
+    },
+    {
+      "dataset": "gaia",
+      "modality": "TL",
+      "stage": "stage1",
+      "stage1_modality": "all",
+      "expected": {"cases": 1099, "hr_at_1": 0.1583257506824385, "hr_at_3": 0.4531392174704277, "hr_at_5": 0.6706096451319381}
+    },
+    {
+      "dataset": "gaia",
+      "modality": "ML",
+      "stage": "stage2",
+      "modality_combo": "log+metric",
+      "profile": "gaia_outflow",
+      "result_path": "rq1_RCA/gaia/log+metric/pr_results.txt",
+      "expected": {"cases": 1061, "hr_at_1": 0.18378887841658811, "hr_at_3": 0.413760603204524, "hr_at_5": 0.6182846371347785}
+    },
+    {
+      "dataset": "gaia",
+      "modality": "TM",
+      "stage": "stage2",
+      "modality_combo": "trace+metric",
+      "profile": "gaia_outflow",
+      "result_path": "rq1_RCA/gaia/trace+metric/pr_results.txt",
+      "expected": {"cases": 1061, "hr_at_1": 0.24505183788878418, "hr_at_3": 0.5032987747408105, "hr_at_5": 0.7238454288407163}
+    },
+    {
+      "dataset": "gaia",
+      "modality": "TML",
+      "stage": "stage2",
+      "modality_combo": "all+metric",
+      "profile": "gaia_outflow",
+      "fusion_alpha": 0.75,
+      "fusion_beta": 0.25,
+      "result_path": "rq1_RCA/gaia/all+metric/pr_results.txt",
+      "expected": {"cases": 1061, "hr_at_1": 0.24882186616399624, "hr_at_3": 0.5391140433553252, "hr_at_5": 0.760603204524034}
+    },
+    {
+      "dataset": "aiops",
+      "modality": "L",
+      "stage": "stage1",
+      "stage1_modality": "log",
+      "expected": {"cases": 174, "hr_at_1": 0.0862068965517241, "hr_at_3": 0.3103448275862069, "hr_at_5": 0.4770114942528735}
+    },
+    {
+      "dataset": "aiops",
+      "modality": "T",
+      "stage": "stage1",
+      "stage1_modality": "trace",
+      "expected": {"cases": 174, "hr_at_1": 0.0862068965517241, "hr_at_3": 0.2701149425287356, "hr_at_5": 0.4540229885057471}
+    },
+    {
+      "dataset": "aiops",
+      "modality": "TL",
+      "stage": "stage1",
+      "stage1_modality": "all",
+      "expected": {"cases": 174, "hr_at_1": 0.0919540229885057, "hr_at_3": 0.3275862068965517, "hr_at_5": 0.5}
+    },
+    {
+      "dataset": "aiops",
+      "modality": "TML",
+      "stage": "stage2",
+      "modality_combo": "all+metric",
+      "profile": "aiops_service_outflow",
+      "variant": "outflowonly_svc3_w5_lag2_a0",
+      "stage1_source_variant": "base",
+      "result_path": "rq1_RCA/aiops-outflowonly_svc3_w5_lag2_a0/all+metric/pr_results.txt",
+      "expected": {"cases": 174, "hr_at_1": 0.22413793103448276, "hr_at_3": 0.4827586206896552, "hr_at_5": 0.6724137931034483}
+    },
+    {
+      "dataset": "aiops",
+      "modality": "ML",
+      "stage": "stage2",
+      "modality_combo": "log+metric",
+      "profile": "aiops_service_outflow_fusion",
+      "variant": "outflowonly_svc3_w5_lag2_svcfusion_a02b05",
+      "stage1_source_variant": "base",
+      "result_path": "rq1_RCA/aiops-outflowonly_svc3_w5_lag2_svcfusion_a02b05/log+metric/pr_results.txt",
+      "expected": {"cases": 174, "hr_at_1": 0.12643678160919541, "hr_at_3": 0.39655172413793105, "hr_at_5": 0.6206896551724138}
+    },
+    {
+      "dataset": "aiops",
+      "modality": "TM",
+      "stage": "stage2",
+      "modality_combo": "trace+metric",
+      "profile": "aiops_service_outflow_fusion",
+      "variant": "outflowonly_svc3_w5_lag2_svcfusion_a02b05",
+      "stage1_source_variant": "base",
+      "result_path": "rq1_RCA/aiops-outflowonly_svc3_w5_lag2_svcfusion_a02b05/trace+metric/pr_results.txt",
+      "expected": {"cases": 174, "hr_at_1": 0.1781609195402299, "hr_at_3": 0.40804597701149425, "hr_at_5": 0.5977011494252874}
+    }
+  ]
+}

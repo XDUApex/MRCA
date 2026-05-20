@@ -1,0 +1,112 @@
+{
+    "11": [
+        {
+            "inject_time": "2023-01-30 11:51:46",
+            "inject_timestamp": "1675079506",
+            "inject_pod": "ts-contacts-service-866bd68c97-dzqgd_metric",
+            "inject_type": "return"
+        },
+        {
+            "inject_time": "2023-01-30 11:59:21",
+            "inject_timestamp": "1675079961",
+            "inject_pod": "ts-user-service-687d654649-f8jtd_metric",
+            "inject_type": "cpu_contention"
+        }
+    ],
+    "12": [
+        {
+            "inject_time": "2023-01-30 12:06:12",
+            "inject_timestamp": "1675080432",
+            "inject_pod": "ts-assurance-service-69876c9868-wqgrl_metric",
+            "inject_type": "cpu_contention"
+        },
+        {
+            "inject_time": "2023-01-30 12:15:56",
+            "inject_timestamp": "1675080896",
+            "inject_pod": "ts-basic-service-5dc8d4f9fd-llznp",
+            "inject_type": "network_delay"
+        },
+        {
+            "inject_time": "2023-01-30 12:29:29",
+            "inject_timestamp": "1675081769",
+            "inject_pod": "ts-verification-code-service-7b6dc75c45-r66rb",
+            "inject_type": "network_delay"
+        },
+        {
+            "inject_time": "2023-01-30 12:36:54",
+            "inject_timestamp": "1675082214",
+            "inject_pod": "ts-seat-service-5c95b49cff-mxdsg_metric",
+            "inject_type": "network_delay"
+        },
+        {
+            "inject_time": "2023-01-30 12:44:36",
+            "inject_timestamp": "1675082676",
+            "inject_pod": "ts-preserve-other-service-66646bdb5b-l8hp6_metric",
+            "inject_type": "cpu_contention"
+        },
+        {
+            "inject_time": "2023-01-30 12:52:04",
+            "inject_timestamp": "1675083124",
+            "inject_pod": "ts-verification-code-service-7b6dc75c45-r66rb_metric",
+            "inject_type": "cpu_contention"
+        },
+        {
+            "inject_time": "2023-01-30 12:59:36",
+            "inject_timestamp": "1675083576",
+            "inject_pod": "ts-admin-travel-service-786f864768-l4b2t_metric",
+            "inject_type": "cpu_contention"
+        }
+    ],
+    "13": [
+        {
+            "inject_time": "2023-01-30 13:06:49",
+            "inject_timestamp": "1675084009",
+            "inject_pod": "ts-admin-order-service-84cbf6c798-jpzbd_metric",
+            "inject_type": "network_delay"
+        },
+        {
+            "inject_time": "2023-01-30 13:15:43",
+            "inject_timestamp": "1675084483",
+            "inject_pod": "ts-order-other-service-6cdbf9b4cc-swvb5_metric",
+            "inject_type": "network_delay"
+        },
+        {
+            "inject_time": "2023-01-30 13:22:22",
+            "inject_timestamp": "1675084942",
+            "inject_pod": "ts-train-service-86f5f97bc9-tlpss_metric",
+            "inject_type": "network_delay"
+        },
+        {
+            "inject_time": "2023-01-30 13:30:52",
+            "inject_timestamp": "1675085392",
+            "inject_pod": "ts-station-food-service-dc4d75dd-k65k2_metric",
+            "inject_type": "cpu_contention"
+        },
+        {
+            "inject_time": "2023-01-30 13:44:44",
+            "inject_timestamp": "1675086284",
+            "inject_pod": "ts-preserve-service-b5ccf8557-l5l4p_metric",
+            "inject_type": "network_delay"
+        },
+        {
+            "inject_time": "2023-01-30 13:52:20",
+            "inject_timestamp": "1675086740",
+            "inject_pod": "ts-order-service-5b67c48447-fj8b7_metric",
+            "inject_type": "cpu_contention"
+        }
+    ],
+    "14": [
+        {
+            "inject_time": "2023-01-30 14:00:16",
+            "inject_timestamp": "1675087216",
+            "inject_pod": "ts-route-plan-service-7cf64f4bd6-g5f82_metric",
+            "inject_type": "network_delay"
+        },
+        {
+            "inject_time": "2023-01-30 14:08:19",
+            "inject_timestamp": "1675087699",
+            "inject_pod": "ts-price-service-76846864d9-nmjz7_metric",
+            "inject_type": "network_delay"
+        }
+    ]
+}

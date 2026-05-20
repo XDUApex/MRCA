@@ -1,0 +1,184 @@
+{
+    "08": [
+        {
+            "inject_time": "2023-01-29 08:43:04",
+            "inject_timestamp": "1674953044",
+            "inject_pod": "ts-contacts-service-866bd68c97-xcqfx_metric",
+            "inject_type": "return"
+        },
+        {
+            "inject_time": "2023-01-29 08:52:06",
+            "inject_timestamp": "1674953526",
+            "inject_pod": "ts-contacts-service-866bd68c97-xcqfx_metric",
+            "inject_type": "return"
+        },
+        {
+            "inject_time": "2023-01-29 08:58:16",
+            "inject_timestamp": "1674953896",
+            "inject_pod": "ts-travel-service-64469b5b48-25zj6_metric",
+            "inject_type": "return"
+        }
+    ],
+    "09": [
+        {
+            "inject_time": "2023-01-29 09:03:53",
+            "inject_timestamp": "1674954273",
+            "inject_pod": "ts-price-service-76846864d9-g465z_metric",
+            "inject_type": "return"
+        },
+        {
+            "inject_time": "2023-01-29 09:12:56",
+            "inject_timestamp": "1674954273",
+            "inject_pod": "ts-rebook-service-bf84c9b7d-j8s2h_metric",
+            "inject_type": "return"
+        },
+        {
+            "inject_time": "2023-01-29 09:21:39",
+            "inject_timestamp": "1674955299",
+            "inject_pod": "ts-notification-service-5c596ccb87-f5trg_metric",
+            "inject_type": "return"
+        },
+        {
+            "inject_time": "2023-01-29 09:25:39",
+            "inject_timestamp": "1674955539",
+            "inject_pod": "ts-admin-travel-service-786f864768-dqjwx_metric",
+            "inject_type": "exception"
+        },
+        {
+            "inject_time": "2023-01-29 09:30:09",
+            "inject_timestamp": "1674955899",
+            "inject_pod": "ts-inside-payment-service-6f94c49ccd-4rdb2_metric",
+            "inject_type": "return"
+        },
+        {
+            "inject_time": "2023-01-29 09:34:19",
+            "inject_timestamp": "1674956119",
+            "inject_pod": "ts-food-service-f5756978c-k8vqf_metric",
+            "inject_type": "return"
+        },
+        {
+            "inject_time": "2023-01-29 09:42:26",
+            "inject_timestamp": "1674956546",
+            "inject_pod": "ts-delivery-service-7d97b69596-lmsfv_metric",
+            "inject_type": "return"
+        },
+        {
+            "inject_time": "2023-01-29 09:49:34",
+            "inject_timestamp": "1674956974",
+            "inject_pod": "ts-order-service-5b67c48447-mv5hb_metric",
+            "inject_type": "return"
+        },
+        {
+            "inject_time": "2023-01-29 09:58:04",
+            "inject_timestamp": "1674957484",
+            "inject_pod": "ts-travel-service-64469b5b48-25zj6_metric",
+            "inject_type": "return"
+        }
+    ],
+    "10": [
+        {
+            "inject_time": "2023-01-29 10:04:34",
+            "inject_timestamp": "1674957874",
+            "inject_pod": "ts-admin-user-service-594b78f59c-jgkzt_metric",
+            "inject_type": "exception"
+        },
+        {
+            "inject_time": "2023-01-29 10:12:48",
+            "inject_timestamp": "1674958388",
+            "inject_pod": "ts-config-service-5fcd447d84-wxwjd_metric",
+            "inject_type": "exception"
+        },
+        {
+            "inject_time": "2023-01-29 10:20:10",
+            "inject_timestamp": "1674958810",
+            "inject_pod": "ts-gateway-service-6f6cfc45b-h5m2n_metric",
+            "inject_type": "exception"
+        },
+        {
+            "inject_time": "2023-01-29 10:26:20",
+            "inject_timestamp": "1674959180",
+            "inject_pod": "ts-delivery-service-7d97b69596-lmsfv_metric",
+            "inject_type": "exception"
+        },
+        {
+            "inject_time": "2023-01-29 10:45:10",
+            "inject_timestamp": "1674960250",
+            "inject_pod": "ts-admin-basic-info-service-5f55b6cf68-77cfw_metric",
+            "inject_type": "exception"
+        },
+        {
+            "inject_time": "2023-01-29 10:50:16",
+            "inject_timestamp": "1674960616",
+            "inject_pod": "ts-delivery-service-7d97b69596-lmsfv_metric",
+            "inject_type": "exception"
+        },
+        {
+            "inject_time": "2023-01-29 10:56:45",
+            "inject_timestamp": "1674961005",
+            "inject_pod": "ts-station-food-service-dc4d75dd-fw6ft_metric",
+            "inject_type": "exception"
+        }
+    ],
+    "11": [
+        {
+            "inject_time": "2023-01-29 11:04:05",
+            "inject_timestamp": "1674961505",
+            "inject_pod": "ts-food-service-f5756978c-k8vqf_metric",
+            "inject_type": "exception"
+        },
+        {
+            "inject_time": "2023-01-29 11:13:56",
+            "inject_timestamp": "1674962036",
+            "inject_pod": "ts-preserve-service-b5ccf8557-j4txs_metric",
+            "inject_type": "exception"
+        },
+        {
+            "inject_time": "2023-01-29 11:19:59",
+            "inject_timestamp": "1674962399",
+            "inject_pod": "ts-admin-travel-service-786f864768-dqjwx_metric",
+            "inject_type": "exception"
+        },
+        {
+            "inject_time": "2023-01-29 11:29:03",
+            "inject_timestamp": "1674962943",
+            "inject_pod": "ts-admin-basic-info-service-5f55b6cf68-77cfw_metric",
+            "inject_type": "exception"
+        },
+        {
+            "inject_time": "2023-01-29 11:36:06",
+            "inject_timestamp": "1674963426",
+            "inject_pod": "ts-route-service-b6c59fb57-zv8dt_metric",
+            "inject_type": "exception"
+        }
+    ],
+    "13": [
+        {
+            "inject_time": "2023-01-29 13:31:54",
+            "inject_timestamp": "1674999114",
+            "inject_pod": "ts-station-food-service-dc4d75dd-fw6ft_metric",
+            "inject_type": "cpu_contention"
+        }
+    ],
+    "14": [
+        {
+            "inject_time": "2023-01-29 14:23:31",
+            "inject_timestamp": "1675002211",
+            "inject_pod": "ts-cancel-service-756f6c4675-vhtvd_metric",
+            "inject_type": "network_delay"
+        },
+        {
+            "inject_time": "2023-01-29 14:49:57",
+            "inject_timestamp": "1675003797",
+            "inject_pod": "ts-route-plan-service-7cf64f4bd6-6k8mv_metric",
+            "inject_type": "cpu_contention"
+        }
+    ],
+    "15": [
+        {
+            "inject_time": "2023-01-29 15:42:00",
+            "inject_timestamp": "1675006920",
+            "inject_pod": "ts-station-food-service-dc4d75dd-fw6ft_metric",
+            "inject_type": "cpu_contention"
+        }
+    ]
+}

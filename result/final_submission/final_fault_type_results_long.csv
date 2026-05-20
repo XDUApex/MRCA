@@ -1,0 +1,139 @@
+dataset,dataset_label,stage,modality_combo,fault_type,cases,hr_at_1,hr_at_3,hr_at_5,value_status,source_path,approximation_basis,note
+aiops,AIOps22,stage1,L,k8s容器cpu负载,20,0.2,0.55,0.8,measured,reports/stage1_all_KL/mrca_eval_fault_type_summary.csv,,Measured stage1 VAE result.
+aiops,AIOps22,stage1,L,k8s容器内存负载,19,0.1052631578947368,0.2105263157894736,0.4210526315789473,measured,reports/stage1_all_KL/mrca_eval_fault_type_summary.csv,,Measured stage1 VAE result.
+aiops,AIOps22,stage1,L,k8s容器写io负载,14,0.0,0.2857142857142857,0.3571428571428571,measured,reports/stage1_all_KL/mrca_eval_fault_type_summary.csv,,Measured stage1 VAE result.
+aiops,AIOps22,stage1,L,k8s容器网络丢包,26,0.0769230769230769,0.2692307692307692,0.4615384615384615,measured,reports/stage1_all_KL/mrca_eval_fault_type_summary.csv,,Measured stage1 VAE result.
+aiops,AIOps22,stage1,L,k8s容器网络延迟,19,0.1578947368421052,0.2631578947368421,0.4210526315789473,measured,reports/stage1_all_KL/mrca_eval_fault_type_summary.csv,,Measured stage1 VAE result.
+aiops,AIOps22,stage1,L,k8s容器网络资源包损坏,20,0.05,0.3,0.45,measured,reports/stage1_all_KL/mrca_eval_fault_type_summary.csv,,Measured stage1 VAE result.
+aiops,AIOps22,stage1,L,k8s容器网络资源包重复发送,23,0.0,0.217391304347826,0.4782608695652174,measured,reports/stage1_all_KL/mrca_eval_fault_type_summary.csv,,Measured stage1 VAE result.
+aiops,AIOps22,stage1,L,k8s容器读io负载,21,0.0952380952380952,0.3333333333333333,0.3809523809523809,measured,reports/stage1_all_KL/mrca_eval_fault_type_summary.csv,,Measured stage1 VAE result.
+aiops,AIOps22,stage1,L,k8s容器进程中止,12,0.0833333333333333,0.4166666666666667,0.5,measured,reports/stage1_all_KL/mrca_eval_fault_type_summary.csv,,Measured stage1 VAE result.
+aiops,AIOps22,stage1,T,k8s容器cpu负载,20,0.2,0.45,0.65,measured,reports/stage1_all_KL/mrca_eval_fault_type_summary.csv,,Measured stage1 VAE result.
+aiops,AIOps22,stage1,T,k8s容器内存负载,19,0.1578947368421052,0.2105263157894736,0.3684210526315789,measured,reports/stage1_all_KL/mrca_eval_fault_type_summary.csv,,Measured stage1 VAE result.
+aiops,AIOps22,stage1,T,k8s容器写io负载,14,0.0,0.0,0.4285714285714285,measured,reports/stage1_all_KL/mrca_eval_fault_type_summary.csv,,Measured stage1 VAE result.
+aiops,AIOps22,stage1,T,k8s容器网络丢包,26,0.0769230769230769,0.2692307692307692,0.4230769230769231,measured,reports/stage1_all_KL/mrca_eval_fault_type_summary.csv,,Measured stage1 VAE result.
+aiops,AIOps22,stage1,T,k8s容器网络延迟,19,0.1052631578947368,0.3684210526315789,0.5789473684210527,measured,reports/stage1_all_KL/mrca_eval_fault_type_summary.csv,,Measured stage1 VAE result.
+aiops,AIOps22,stage1,T,k8s容器网络资源包损坏,20,0.1,0.35,0.5,measured,reports/stage1_all_KL/mrca_eval_fault_type_summary.csv,,Measured stage1 VAE result.
+aiops,AIOps22,stage1,T,k8s容器网络资源包重复发送,23,0.0,0.217391304347826,0.4347826086956521,measured,reports/stage1_all_KL/mrca_eval_fault_type_summary.csv,,Measured stage1 VAE result.
+aiops,AIOps22,stage1,T,k8s容器读io负载,21,0.0476190476190476,0.2857142857142857,0.3809523809523809,measured,reports/stage1_all_KL/mrca_eval_fault_type_summary.csv,,Measured stage1 VAE result.
+aiops,AIOps22,stage1,T,k8s容器进程中止,12,0.0833333333333333,0.1666666666666666,0.25,measured,reports/stage1_all_KL/mrca_eval_fault_type_summary.csv,,Measured stage1 VAE result.
+aiops,AIOps22,stage1,TL,k8s容器cpu负载,20,0.05,0.45,0.8,measured,reports/stage1_all_KL/mrca_eval_fault_type_summary.csv,,Measured stage1 VAE result.
+aiops,AIOps22,stage1,TL,k8s容器内存负载,19,0.1578947368421052,0.2631578947368421,0.5263157894736842,measured,reports/stage1_all_KL/mrca_eval_fault_type_summary.csv,,Measured stage1 VAE result.
+aiops,AIOps22,stage1,TL,k8s容器写io负载,14,0.0714285714285714,0.1428571428571428,0.5,measured,reports/stage1_all_KL/mrca_eval_fault_type_summary.csv,,Measured stage1 VAE result.
+aiops,AIOps22,stage1,TL,k8s容器网络丢包,26,0.0769230769230769,0.2692307692307692,0.4615384615384615,measured,reports/stage1_all_KL/mrca_eval_fault_type_summary.csv,,Measured stage1 VAE result.
+aiops,AIOps22,stage1,TL,k8s容器网络延迟,19,0.1578947368421052,0.3157894736842105,0.3684210526315789,measured,reports/stage1_all_KL/mrca_eval_fault_type_summary.csv,,Measured stage1 VAE result.
+aiops,AIOps22,stage1,TL,k8s容器网络资源包损坏,20,0.1,0.35,0.5,measured,reports/stage1_all_KL/mrca_eval_fault_type_summary.csv,,Measured stage1 VAE result.
+aiops,AIOps22,stage1,TL,k8s容器网络资源包重复发送,23,0.0434782608695652,0.3478260869565217,0.4782608695652174,measured,reports/stage1_all_KL/mrca_eval_fault_type_summary.csv,,Measured stage1 VAE result.
+aiops,AIOps22,stage1,TL,k8s容器读io负载,21,0.0476190476190476,0.3333333333333333,0.3809523809523809,measured,reports/stage1_all_KL/mrca_eval_fault_type_summary.csv,,Measured stage1 VAE result.
+aiops,AIOps22,stage1,TL,k8s容器进程中止,12,0.1666666666666666,0.5,0.5,measured,reports/stage1_all_KL/mrca_eval_fault_type_summary.csv,,Measured stage1 VAE result.
+aiops,AIOps22,stage2,ML,k8s容器cpu负载,20,0.25,0.65,0.9,measured,reports/final_stage2_fault_type_summary.csv,,Measured canonical stage2 fault-type result retained for final artifact regeneration.
+aiops,AIOps22,stage2,ML,k8s容器内存负载,19,0.1052631578947368,0.3684210526315789,0.5263157894736842,measured,reports/final_stage2_fault_type_summary.csv,,Measured canonical stage2 fault-type result retained for final artifact regeneration.
+aiops,AIOps22,stage2,ML,k8s容器写io负载,14,0.0714285714285714,0.2857142857142857,0.7142857142857143,measured,reports/final_stage2_fault_type_summary.csv,,Measured canonical stage2 fault-type result retained for final artifact regeneration.
+aiops,AIOps22,stage2,ML,k8s容器网络丢包,26,0.1153846153846153,0.5384615384615384,0.7692307692307693,measured,reports/final_stage2_fault_type_summary.csv,,Measured canonical stage2 fault-type result retained for final artifact regeneration.
+aiops,AIOps22,stage2,ML,k8s容器网络延迟,19,0.2105263157894736,0.5263157894736842,0.6842105263157895,measured,reports/final_stage2_fault_type_summary.csv,,Measured canonical stage2 fault-type result retained for final artifact regeneration.
+aiops,AIOps22,stage2,ML,k8s容器网络资源包损坏,20,0.15,0.35,0.65,measured,reports/final_stage2_fault_type_summary.csv,,Measured canonical stage2 fault-type result retained for final artifact regeneration.
+aiops,AIOps22,stage2,ML,k8s容器网络资源包重复发送,23,0.0434782608695652,0.1739130434782608,0.3478260869565217,measured,reports/final_stage2_fault_type_summary.csv,,Measured canonical stage2 fault-type result retained for final artifact regeneration.
+aiops,AIOps22,stage2,ML,k8s容器读io负载,21,0.0476190476190476,0.3333333333333333,0.5238095238095238,measured,reports/final_stage2_fault_type_summary.csv,,Measured canonical stage2 fault-type result retained for final artifact regeneration.
+aiops,AIOps22,stage2,ML,k8s容器进程中止,12,0.1666666666666666,0.25,0.4166666666666667,measured,reports/final_stage2_fault_type_summary.csv,,Measured canonical stage2 fault-type result retained for final artifact regeneration.
+aiops,AIOps22,stage2,TM,k8s容器cpu负载,20,0.45,0.6,0.75,measured,reports/final_stage2_fault_type_summary.csv,,Measured canonical stage2 fault-type result retained for final artifact regeneration.
+aiops,AIOps22,stage2,TM,k8s容器内存负载,19,0.2105263157894736,0.4210526315789473,0.631578947368421,measured,reports/final_stage2_fault_type_summary.csv,,Measured canonical stage2 fault-type result retained for final artifact regeneration.
+aiops,AIOps22,stage2,TM,k8s容器写io负载,14,0.0,0.2142857142857142,0.5714285714285714,measured,reports/final_stage2_fault_type_summary.csv,,Measured canonical stage2 fault-type result retained for final artifact regeneration.
+aiops,AIOps22,stage2,TM,k8s容器网络丢包,26,0.1538461538461538,0.4230769230769231,0.6153846153846154,measured,reports/final_stage2_fault_type_summary.csv,,Measured canonical stage2 fault-type result retained for final artifact regeneration.
+aiops,AIOps22,stage2,TM,k8s容器网络延迟,19,0.2631578947368421,0.4736842105263157,0.7368421052631579,measured,reports/final_stage2_fault_type_summary.csv,,Measured canonical stage2 fault-type result retained for final artifact regeneration.
+aiops,AIOps22,stage2,TM,k8s容器网络资源包损坏,20,0.2,0.55,0.7,measured,reports/final_stage2_fault_type_summary.csv,,Measured canonical stage2 fault-type result retained for final artifact regeneration.
+aiops,AIOps22,stage2,TM,k8s容器网络资源包重复发送,23,0.0869565217391304,0.3043478260869565,0.3043478260869565,measured,reports/final_stage2_fault_type_summary.csv,,Measured canonical stage2 fault-type result retained for final artifact regeneration.
+aiops,AIOps22,stage2,TM,k8s容器读io负载,21,0.1428571428571428,0.3809523809523809,0.5714285714285714,measured,reports/final_stage2_fault_type_summary.csv,,Measured canonical stage2 fault-type result retained for final artifact regeneration.
+aiops,AIOps22,stage2,TM,k8s容器进程中止,12,0.0,0.1666666666666666,0.5,measured,reports/final_stage2_fault_type_summary.csv,,Measured canonical stage2 fault-type result retained for final artifact regeneration.
+aiops,AIOps22,stage2,TML,k8s容器cpu负载,20,0.25,0.7,0.85,measured,reports/final_stage2_fault_type_summary.csv,,Measured canonical stage2 fault-type result retained for final artifact regeneration.
+aiops,AIOps22,stage2,TML,k8s容器内存负载,19,0.1578947368421052,0.3684210526315789,0.631578947368421,measured,reports/final_stage2_fault_type_summary.csv,,Measured canonical stage2 fault-type result retained for final artifact regeneration.
+aiops,AIOps22,stage2,TML,k8s容器写io负载,14,0.2142857142857142,0.4285714285714285,0.6428571428571429,measured,reports/final_stage2_fault_type_summary.csv,,Measured canonical stage2 fault-type result retained for final artifact regeneration.
+aiops,AIOps22,stage2,TML,k8s容器网络丢包,26,0.2692307692307692,0.5384615384615384,0.7692307692307693,measured,reports/final_stage2_fault_type_summary.csv,,Measured canonical stage2 fault-type result retained for final artifact regeneration.
+aiops,AIOps22,stage2,TML,k8s容器网络延迟,19,0.2631578947368421,0.6842105263157895,0.7894736842105263,measured,reports/final_stage2_fault_type_summary.csv,,Measured canonical stage2 fault-type result retained for final artifact regeneration.
+aiops,AIOps22,stage2,TML,k8s容器网络资源包损坏,20,0.45,0.6,0.8,measured,reports/final_stage2_fault_type_summary.csv,,Measured canonical stage2 fault-type result retained for final artifact regeneration.
+aiops,AIOps22,stage2,TML,k8s容器网络资源包重复发送,23,0.0869565217391304,0.1739130434782608,0.3478260869565217,measured,reports/final_stage2_fault_type_summary.csv,,Measured canonical stage2 fault-type result retained for final artifact regeneration.
+aiops,AIOps22,stage2,TML,k8s容器读io负载,21,0.1904761904761904,0.4285714285714285,0.6190476190476191,measured,reports/final_stage2_fault_type_summary.csv,,Measured canonical stage2 fault-type result retained for final artifact regeneration.
+aiops,AIOps22,stage2,TML,k8s容器进程中止,12,0.0833333333333333,0.4166666666666667,0.5833333333333334,measured,reports/final_stage2_fault_type_summary.csv,,Measured canonical stage2 fault-type result retained for final artifact regeneration.
+gaia,GAIA,stage1,L,[access permission denied exception],15,0.1333333333333333,0.4,0.9333333333333332,measured,reports/stage1_all_KL/mrca_eval_fault_type_summary.csv,,Measured stage1 VAE result.
+gaia,GAIA,stage1,L,[file moving program],36,0.0277777777777777,0.5555555555555556,0.9166666666666666,measured,reports/stage1_all_KL/mrca_eval_fault_type_summary.csv,,Measured stage1 VAE result.
+gaia,GAIA,stage1,L,[login failure],527,0.0550284629981024,0.2201138519924098,0.6489563567362429,measured,reports/stage1_all_KL/mrca_eval_fault_type_summary.csv,,Measured stage1 VAE result.
+gaia,GAIA,stage1,L,[memory_anomalies],505,0.1326732673267326,0.396039603960396,0.6594059405940594,measured,reports/stage1_all_KL/mrca_eval_fault_type_summary.csv,,Measured stage1 VAE result.
+gaia,GAIA,stage1,L,[normal memory freed label],16,0.125,0.6875,0.9375,measured,reports/stage1_all_KL/mrca_eval_fault_type_summary.csv,,Measured stage1 VAE result.
+gaia,GAIA,stage1,T,[access permission denied exception],15,0.0,0.4666666666666667,0.9333333333333332,measured,reports/stage1_all_KL/mrca_eval_fault_type_summary.csv,,Measured stage1 VAE result.
+gaia,GAIA,stage1,T,[file moving program],36,0.3055555555555556,0.8333333333333334,0.9166666666666666,measured,reports/stage1_all_KL/mrca_eval_fault_type_summary.csv,,Measured stage1 VAE result.
+gaia,GAIA,stage1,T,[login failure],527,0.1309297912713472,0.5104364326375711,0.6489563567362429,measured,reports/stage1_all_KL/mrca_eval_fault_type_summary.csv,,Measured stage1 VAE result.
+gaia,GAIA,stage1,T,[memory_anomalies],505,0.1524752475247524,0.4198019801980198,0.6594059405940594,measured,reports/stage1_all_KL/mrca_eval_fault_type_summary.csv,,Measured stage1 VAE result.
+gaia,GAIA,stage1,T,[normal memory freed label],16,0.5,0.625,0.9375,measured,reports/stage1_all_KL/mrca_eval_fault_type_summary.csv,,Measured stage1 VAE result.
+gaia,GAIA,stage1,TL,[access permission denied exception],15,0.3333333333333333,0.6666666666666666,0.9333333333333332,measured,reports/stage1_all_KL/mrca_eval_fault_type_summary.csv,,Measured stage1 VAE result.
+gaia,GAIA,stage1,TL,[file moving program],36,0.2222222222222222,0.5833333333333334,0.9166666666666666,measured,reports/stage1_all_KL/mrca_eval_fault_type_summary.csv,,Measured stage1 VAE result.
+gaia,GAIA,stage1,TL,[login failure],527,0.1555977229601518,0.4459203036053131,0.6489563567362429,measured,reports/stage1_all_KL/mrca_eval_fault_type_summary.csv,,Measured stage1 VAE result.
+gaia,GAIA,stage1,TL,[memory_anomalies],505,0.1445544554455445,0.4356435643564356,0.6594059405940594,measured,reports/stage1_all_KL/mrca_eval_fault_type_summary.csv,,Measured stage1 VAE result.
+gaia,GAIA,stage1,TL,[normal memory freed label],16,0.375,0.75,0.9375,measured,reports/stage1_all_KL/mrca_eval_fault_type_summary.csv,,Measured stage1 VAE result.
+gaia,GAIA,stage2,ML,[access permission denied exception],15,0.0666666666666666,0.3333333333333333,0.4666666666666667,measured,reports/final_stage2_fault_type_summary.csv,,Measured canonical stage2 fault-type result retained for final artifact regeneration.
+gaia,GAIA,stage2,ML,[file moving program],33,0.0303030303030303,0.2727272727272727,0.5757575757575758,measured,reports/final_stage2_fault_type_summary.csv,,Measured canonical stage2 fault-type result retained for final artifact regeneration.
+gaia,GAIA,stage2,ML,[login failure],506,0.116600790513834,0.3241106719367589,0.5197628458498024,measured,reports/final_stage2_fault_type_summary.csv,,Measured canonical stage2 fault-type result retained for final artifact regeneration.
+gaia,GAIA,stage2,ML,[memory_anomalies],491,0.2647657841140529,0.5193482688391039,0.725050916496945,measured,reports/final_stage2_fault_type_summary.csv,,Measured canonical stage2 fault-type result retained for final artifact regeneration.
+gaia,GAIA,stage2,ML,[normal memory freed label],16,0.25,0.375,0.6875,measured,reports/final_stage2_fault_type_summary.csv,,Measured canonical stage2 fault-type result retained for final artifact regeneration.
+gaia,GAIA,stage2,TM,[access permission denied exception],15,0.0,0.2,0.3333333333333333,measured,reports/final_stage2_fault_type_summary.csv,,Measured canonical stage2 fault-type result retained for final artifact regeneration.
+gaia,GAIA,stage2,TM,[file moving program],33,0.303030303030303,0.4848484848484848,0.7575757575757576,measured,reports/final_stage2_fault_type_summary.csv,,Measured canonical stage2 fault-type result retained for final artifact regeneration.
+gaia,GAIA,stage2,TM,[login failure],506,0.2094861660079051,0.4960474308300395,0.7252964426877471,measured,reports/final_stage2_fault_type_summary.csv,,Measured canonical stage2 fault-type result retained for final artifact regeneration.
+gaia,GAIA,stage2,TM,[memory_anomalies],491,0.2790224032586558,0.5213849287169042,0.7372708757637475,measured,reports/final_stage2_fault_type_summary.csv,,Measured canonical stage2 fault-type result retained for final artifact regeneration.
+gaia,GAIA,stage2,TM,[normal memory freed label],16,0.4375,0.5,0.5625,measured,reports/final_stage2_fault_type_summary.csv,,Measured canonical stage2 fault-type result retained for final artifact regeneration.
+gaia,GAIA,stage2,TML,[access permission denied exception],15,0.3333333333333333,0.6,0.7333333333333333,measured,reports/final_stage2_fault_type_summary.csv,,Measured canonical stage2 fault-type result retained for final artifact regeneration.
+gaia,GAIA,stage2,TML,[file moving program],33,0.1818181818181818,0.3636363636363636,0.696969696969697,measured,reports/final_stage2_fault_type_summary.csv,,Measured canonical stage2 fault-type result retained for final artifact regeneration.
+gaia,GAIA,stage2,TML,[login failure],506,0.2233201581027667,0.541501976284585,0.7569169960474308,measured,reports/final_stage2_fault_type_summary.csv,,Measured canonical stage2 fault-type result retained for final artifact regeneration.
+gaia,GAIA,stage2,TML,[memory_anomalies],491,0.2749490835030549,0.5437881873727087,0.7678207739307535,measured,reports/final_stage2_fault_type_summary.csv,,Measured canonical stage2 fault-type result retained for final artifact regeneration.
+gaia,GAIA,stage2,TML,[normal memory freed label],16,0.3125,0.625,0.8125,measured,reports/final_stage2_fault_type_summary.csv,,Measured canonical stage2 fault-type result retained for final artifact regeneration.
+ob,OB,stage1,L,cpu_consumed,1,0.0,0.0,1.0,measured,reports/tt_ob_full_rerun/mrca_eval_fault_type_summary.csv,,Measured stage1 VAE result.
+ob,OB,stage1,L,cpu_contention,19,0.1578947368421052,0.3157894736842105,0.5263157894736842,measured,reports/tt_ob_full_rerun/mrca_eval_fault_type_summary.csv,,Measured stage1 VAE result.
+ob,OB,stage1,L,exception,7,0.2857142857142857,0.2857142857142857,0.7142857142857143,measured,reports/tt_ob_full_rerun/mrca_eval_fault_type_summary.csv,,Measured stage1 VAE result.
+ob,OB,stage1,L,network_delay,22,0.1363636363636363,0.3636363636363636,0.4090909090909091,measured,reports/tt_ob_full_rerun/mrca_eval_fault_type_summary.csv,,Measured stage1 VAE result.
+ob,OB,stage1,L,return,7,0.0,0.1428571428571428,0.5714285714285714,measured,reports/tt_ob_full_rerun/mrca_eval_fault_type_summary.csv,,Measured stage1 VAE result.
+ob,OB,stage1,T,cpu_consumed,1,0.0,0.0,0.0,measured,reports/tt_ob_full_rerun/mrca_eval_fault_type_summary.csv,,Measured stage1 VAE result.
+ob,OB,stage1,T,cpu_contention,19,0.2105263157894736,0.3157894736842105,0.5263157894736842,measured,reports/tt_ob_full_rerun/mrca_eval_fault_type_summary.csv,,Measured stage1 VAE result.
+ob,OB,stage1,T,exception,7,0.0,0.2857142857142857,0.5714285714285714,measured,reports/tt_ob_full_rerun/mrca_eval_fault_type_summary.csv,,Measured stage1 VAE result.
+ob,OB,stage1,T,network_delay,22,0.0454545454545454,0.2727272727272727,0.4090909090909091,measured,reports/tt_ob_full_rerun/mrca_eval_fault_type_summary.csv,,Measured stage1 VAE result.
+ob,OB,stage1,T,return,7,0.1428571428571428,0.2857142857142857,0.5714285714285714,measured,reports/tt_ob_full_rerun/mrca_eval_fault_type_summary.csv,,Measured stage1 VAE result.
+ob,OB,stage1,TL,cpu_consumed,1,0.0,0.0,0.0,measured,reports/tt_ob_full_rerun/mrca_eval_fault_type_summary.csv,,Measured stage1 VAE result.
+ob,OB,stage1,TL,cpu_contention,19,0.1578947368421052,0.5263157894736842,0.7368421052631579,measured,reports/tt_ob_full_rerun/mrca_eval_fault_type_summary.csv,,Measured stage1 VAE result.
+ob,OB,stage1,TL,exception,7,0.1428571428571428,0.4285714285714285,0.4285714285714285,measured,reports/tt_ob_full_rerun/mrca_eval_fault_type_summary.csv,,Measured stage1 VAE result.
+ob,OB,stage1,TL,network_delay,22,0.0909090909090909,0.2272727272727272,0.4545454545454545,measured,reports/tt_ob_full_rerun/mrca_eval_fault_type_summary.csv,,Measured stage1 VAE result.
+ob,OB,stage1,TL,return,7,0.0,0.1428571428571428,0.2857142857142857,measured,reports/tt_ob_full_rerun/mrca_eval_fault_type_summary.csv,,Measured stage1 VAE result.
+ob,OB,stage2,ML,cpu_consumed,1,0.0,0.0,0.0,measured,reports/final_stage2_fault_type_summary.csv,,Measured canonical stage2 fault-type result retained for final artifact regeneration.
+ob,OB,stage2,ML,cpu_contention,19,0.2631578947368421,0.3157894736842105,0.4736842105263157,measured,reports/final_stage2_fault_type_summary.csv,,Measured canonical stage2 fault-type result retained for final artifact regeneration.
+ob,OB,stage2,ML,exception,7,0.2857142857142857,0.2857142857142857,0.4285714285714285,measured,reports/final_stage2_fault_type_summary.csv,,Measured canonical stage2 fault-type result retained for final artifact regeneration.
+ob,OB,stage2,ML,network_delay,22,0.1363636363636363,0.3181818181818182,0.5909090909090909,measured,reports/final_stage2_fault_type_summary.csv,,Measured canonical stage2 fault-type result retained for final artifact regeneration.
+ob,OB,stage2,ML,return,7,0.0,0.2857142857142857,0.7142857142857143,measured,reports/final_stage2_fault_type_summary.csv,,Measured canonical stage2 fault-type result retained for final artifact regeneration.
+ob,OB,stage2,TM,cpu_consumed,1,0.0,0.0,0.0,measured,reports/final_stage2_fault_type_summary.csv,,Measured canonical stage2 fault-type result retained for final artifact regeneration.
+ob,OB,stage2,TM,cpu_contention,19,0.2105263157894736,0.3157894736842105,0.4736842105263157,measured,reports/final_stage2_fault_type_summary.csv,,Measured canonical stage2 fault-type result retained for final artifact regeneration.
+ob,OB,stage2,TM,exception,7,0.0,0.2857142857142857,0.5714285714285714,measured,reports/final_stage2_fault_type_summary.csv,,Measured canonical stage2 fault-type result retained for final artifact regeneration.
+ob,OB,stage2,TM,network_delay,22,0.0454545454545454,0.1363636363636363,0.3636363636363636,measured,reports/final_stage2_fault_type_summary.csv,,Measured canonical stage2 fault-type result retained for final artifact regeneration.
+ob,OB,stage2,TM,return,7,0.1428571428571428,0.4285714285714285,0.4285714285714285,measured,reports/final_stage2_fault_type_summary.csv,,Measured canonical stage2 fault-type result retained for final artifact regeneration.
+ob,OB,stage2,TML,cpu_consumed,1,0.0,0.0,0.0,measured,reports/final_stage2_fault_type_summary.csv,,Measured canonical stage2 fault-type result retained for final artifact regeneration.
+ob,OB,stage2,TML,cpu_contention,19,0.8421052631578947,0.8947368421052632,0.8947368421052632,measured,reports/final_stage2_fault_type_summary.csv,,Measured canonical stage2 fault-type result retained for final artifact regeneration.
+ob,OB,stage2,TML,exception,7,0.0,0.5714285714285714,0.5714285714285714,measured,reports/final_stage2_fault_type_summary.csv,,Measured canonical stage2 fault-type result retained for final artifact regeneration.
+ob,OB,stage2,TML,network_delay,22,0.7272727272727273,0.9090909090909092,1.0,measured,reports/final_stage2_fault_type_summary.csv,,Measured canonical stage2 fault-type result retained for final artifact regeneration.
+ob,OB,stage2,TML,return,7,0.1428571428571428,0.4285714285714285,0.7142857142857143,measured,reports/final_stage2_fault_type_summary.csv,,Measured canonical stage2 fault-type result retained for final artifact regeneration.
+tt,TT,stage1,L,cpu_contention,10,0.0,0.0,0.0,measured,reports/tt_ob_full_rerun/mrca_eval_fault_type_summary.csv,,Measured stage1 VAE result.
+tt,TT,stage1,L,exception,13,0.0,0.0,0.0769230769230769,measured,reports/tt_ob_full_rerun/mrca_eval_fault_type_summary.csv,,Measured stage1 VAE result.
+tt,TT,stage1,L,network_delay,10,0.0,0.2,0.2,measured,reports/tt_ob_full_rerun/mrca_eval_fault_type_summary.csv,,Measured stage1 VAE result.
+tt,TT,stage1,L,return,12,0.0833333333333333,0.0833333333333333,0.0833333333333333,measured,reports/tt_ob_full_rerun/mrca_eval_fault_type_summary.csv,,Measured stage1 VAE result.
+tt,TT,stage1,T,cpu_contention,10,0.0,0.1,0.1,measured,reports/tt_ob_full_rerun/mrca_eval_fault_type_summary.csv,,Measured stage1 VAE result.
+tt,TT,stage1,T,exception,13,0.0,0.0769230769230769,0.0769230769230769,measured,reports/tt_ob_full_rerun/mrca_eval_fault_type_summary.csv,,Measured stage1 VAE result.
+tt,TT,stage1,T,network_delay,10,0.0,0.1,0.2,measured,reports/tt_ob_full_rerun/mrca_eval_fault_type_summary.csv,,Measured stage1 VAE result.
+tt,TT,stage1,T,return,12,0.0,0.0,0.0833333333333333,measured,reports/tt_ob_full_rerun/mrca_eval_fault_type_summary.csv,,Measured stage1 VAE result.
+tt,TT,stage1,TL,cpu_contention,10,0.2,0.2,0.2,measured,reports/tt_ob_full_rerun/mrca_eval_fault_type_summary.csv,,Measured stage1 VAE result.
+tt,TT,stage1,TL,exception,13,0.0,0.0769230769230769,0.0769230769230769,measured,reports/tt_ob_full_rerun/mrca_eval_fault_type_summary.csv,,Measured stage1 VAE result.
+tt,TT,stage1,TL,network_delay,10,0.0,0.1,0.1,measured,reports/tt_ob_full_rerun/mrca_eval_fault_type_summary.csv,,Measured stage1 VAE result.
+tt,TT,stage1,TL,return,12,0.0,0.25,0.25,measured,reports/tt_ob_full_rerun/mrca_eval_fault_type_summary.csv,,Measured stage1 VAE result.
+tt,TT,stage2,ML,cpu_contention,10,0.0,0.0,0.0,measured,reports/final_stage2_fault_type_summary.csv,,Measured canonical stage2 fault-type result retained for final artifact regeneration.
+tt,TT,stage2,ML,exception,13,0.0,0.0,0.0769230769230769,measured,reports/final_stage2_fault_type_summary.csv,,Measured canonical stage2 fault-type result retained for final artifact regeneration.
+tt,TT,stage2,ML,network_delay,10,0.0,0.1,0.2,measured,reports/final_stage2_fault_type_summary.csv,,Measured canonical stage2 fault-type result retained for final artifact regeneration.
+tt,TT,stage2,ML,return,12,0.0833333333333333,0.0833333333333333,0.1666666666666666,measured,reports/final_stage2_fault_type_summary.csv,,Measured canonical stage2 fault-type result retained for final artifact regeneration.
+tt,TT,stage2,TM,cpu_contention,10,0.0,0.1,0.2,measured,reports/final_stage2_fault_type_summary.csv,,Measured canonical stage2 fault-type result retained for final artifact regeneration.
+tt,TT,stage2,TM,exception,13,0.0,0.0,0.0769230769230769,measured,reports/final_stage2_fault_type_summary.csv,,Measured canonical stage2 fault-type result retained for final artifact regeneration.
+tt,TT,stage2,TM,network_delay,10,0.0,0.1,0.1,measured,reports/final_stage2_fault_type_summary.csv,,Measured canonical stage2 fault-type result retained for final artifact regeneration.
+tt,TT,stage2,TM,return,12,0.0,0.0,0.25,measured,reports/final_stage2_fault_type_summary.csv,,Measured canonical stage2 fault-type result retained for final artifact regeneration.
+tt,TT,stage2,TML,cpu_contention,10,0.6,0.9,1.0,measured,reports/final_stage2_fault_type_summary.csv,,Measured canonical stage2 fault-type result retained for final artifact regeneration.
+tt,TT,stage2,TML,exception,13,0.6153846153846154,0.8461538461538461,0.9230769230769232,measured,reports/final_stage2_fault_type_summary.csv,,Measured canonical stage2 fault-type result retained for final artifact regeneration.
+tt,TT,stage2,TML,network_delay,10,0.8,0.8,0.8,measured,reports/final_stage2_fault_type_summary.csv,,Measured canonical stage2 fault-type result retained for final artifact regeneration.
+tt,TT,stage2,TML,return,12,0.4166666666666667,0.6666666666666666,0.75,measured,reports/final_stage2_fault_type_summary.csv,,Measured canonical stage2 fault-type result retained for final artifact regeneration.

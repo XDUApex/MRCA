@@ -1,0 +1,2 @@
+owner,method_id,dataset_id,modality,seed,size_gb,n_records,t_preprocess_sec,t_train_sec,t_infer_p50_ms,t_infer_p95_ms,peak_rss_gb,cpu_time_sec,mrr,top1,top3,top5,precision,recall,f1,metrics_active_series,logs_template_count,traces_avg_spans_per_trace,model_params
+fuxian,MRCA,TT,MLT,-1,0.5445523420348763,2310940,18.747061197005678,4.703210718987975,1091.2884469871642,1102.890068142733,0.8792648315429688,73.893164,0.6996296296296295,0.6,0.8,0.8666666666666667,-1.0,-1.0,-1.0,276,4056,71.79564372918979,6946

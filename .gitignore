@@ -1,5 +1,9 @@
 *.csv
+!result/final_submission/*.csv
+!result/rq2/MRCA/*.csv
 *.json
+!configs/final_rq1_mrca.json
+!raw_data/abnormal/**/*fault_list.json
 *.txt
 *.pyc
 *.pth

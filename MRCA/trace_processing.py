@@ -1,13 +1,13 @@
 import os
-import time
+import numpy as np
 import pandas as pd
 import argparse
-from datetime import datetime, timedelta
 from config import get_dataset_config
+from MRCA.rq2_profiling import RQ2Profiler
 
 DATASET = None
 
-def process_trace_files(input_folder, output_folder):
+def process_trace_files(input_folder, output_folder, profiler=None):
     """处理单个文件夹的trace文件"""
     if not os.path.exists(output_folder):
         os.makedirs(output_folder)
@@ -25,6 +25,9 @@ def process_trace_files(input_folder, output_folder):
             print(f"Processing file: {filename}")
             file_path = os.path.join(input_folder, filename)
             data = pd.read_csv(file_path)
+            if profiler is not None:
+                profiler.add_input_file(file_path, len(data))
+                profiler.observe_trace_dataframe(data)
 
             global DATASET
             # gaia 数据集的列名适配
@@ -77,45 +80,62 @@ def process_trace_files(input_folder, output_folder):
                     else:
                         aggregated_trace.to_csv(output_file, index=False)
 
-def process_multiple_days_trace(config, data_type):
+def process_multiple_days_trace(config, data_type, profiler=None):
     """处理多天的trace数据"""
     data_config = config[f'{data_type}_data']
     base_input_folder = data_config['path']
     base_output_folder = os.path.join(config['processed_data_path'], data_type)
-    
+
     dates_to_process = data_config['dates']
-    
+
     for date_str in dates_to_process:
         input_folder = os.path.join(base_input_folder, date_str, 'trace')
         output_folder = os.path.join(base_output_folder, date_str, 'trace_latency')
-        
+
         if os.path.exists(input_folder):
             print(f"Processing {data_type} trace data for {date_str}")
-            process_trace_files(input_folder, output_folder)
+            process_trace_files(input_folder, output_folder, profiler=profiler)
         else:
             print(f"Warning: Trace folder not found for {date_str}")
 
 def main():
     parser = argparse.ArgumentParser(description='Process trace data for specified dataset')
-    parser.add_argument('--dataset', type=str, required=True, 
+    parser.add_argument('--dataset', type=str, required=True,
                        help='Dataset name (ob, tt, gaia, aiops)')
-    
+    parser.add_argument('--experiment', type=str, default='rq1', choices=['rq1', 'rq3'],
+                        help='Experiment namespace for path layout')
+    parser.add_argument('--variant', type=str, default='base',
+                        help='Scenario suffix to avoid overwriting results, e.g. base/1/2/3')
+
     args = parser.parse_args()
 
     global DATASET
     DATASET = args.dataset
-    
-    # 获取数据集配置
-    config = get_dataset_config(args.dataset)
-    
+
+    config = get_dataset_config(args.dataset, experiment=args.experiment, variant=args.variant)
+
+    profiler = RQ2Profiler(
+        dataset=args.dataset,
+        script_name='trace_processing',
+        stage='preprocess',
+        modality='T',
+        experiment=args.experiment,
+        variant=args.variant,
+    )
+
     print(f"Processing {config['name']} trace data...")
-    
-    print("Processing normal data...")
-    process_multiple_days_trace(config, 'normal')
-    
-    print("Processing abnormal data...")
-    process_multiple_days_trace(config, 'abnormal')
-    
+    print(f"Experiment: {args.experiment}, Variant: {args.variant}")
+
+    with profiler.phase('preprocess'):
+        print("Processing normal data...")
+        process_multiple_days_trace(config, 'normal', profiler=profiler)
+
+        print("Processing abnormal data...")
+        process_multiple_days_trace(config, 'abnormal', profiler=profiler)
+
+    artifact = profiler.write_json()
+    print(f"[RQ2] Profiling artifact saved: {artifact}")
+
     print(f"Trace processing completed for {config['name']}")
 
 if __name__ == "__main__":
